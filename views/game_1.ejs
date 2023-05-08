@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Memmory Game</title>
+    <style>
+        #start, #restart, #backToHome{
+            height: 2rem;
+            width: 10rem;
+            /* background-color: #df9374d5; */
+            border: 1px solid #960;
+            font-size: 1.5rem;
+            color: #000000d3;
+        }
+
+    </style>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <button id="infoBtn" style="
+    background-color: #ddd;
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    " >i</button>
+
+
+    <div id="infoModal" style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    ">
+This is Memmory Game, test your eye sight and memory
+As you see there are 15 dots, the dots will blick randomly.
+each time new dot will added into the sequence, and user have to click the dot in proper sequence
+if user failed to do so, the game will end. and final score is displayed below.
+<br>
+user have to click Strat to start the game and when the game is over
+<br>
+user have to click Home button to come back to map.
+    <br>
+    Click in the BOX to close me
+</div>
+
+<div id="member_login" style="width: 39rem; margin-top: 5rem;">
+    <div style="margin-left: 3rem;">
+        <h1 id="WhichGame" style="margin-left:3rem;">Memmory Game</h1>
+        <div class="cleaner h10"></div>
+        <div class="game-container">
+            <table>
+                <tr>
+                    <td><div class="dot" id="1"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="2"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="3"></div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div class="dot" id="4"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="5"></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><div class="dot" id="6"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="7"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="8"></div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div class="dot" id="9"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="10"></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><div class="dot" id="11"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="12"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="13"></div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div class="dot" id="14"></div></td>
+                    <td></td>
+                    <td><div class="dot" id="15"></div></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="cleaner h10"></div>
+    <div class="cleaner h10"></div>
+    <div class="controls" >
+        <button id="start" style="margin-left: 13.5rem;">Start</button>
+        <!-- <button id="restart" disabled>Restart</button> -->
+        <!-- <input type="hidden" name="score" id="hiddenScore"> --> 
+        <div style="margin-left: 13.5rem;">
+            <p> Your Score is </p>
+            <div id="score" style="margin-left: 4.5rem;" >0</div>
+        </div>
+      
+    </div >
+    <div class="controls" style="margin-left: 13.5rem;">
+        <form method="POST" action="/game_1">
+            <input type="hidden" name="game_score" id="g_score" value="">
+            <button type="submit" id="backToHome">Home</button>
+        </form>
+    </div>
+    
+
+
+</div>
+    <script src="/js/app1.js"></script>
+    <script>
+        document.getElementById('infoBtn').addEventListener('click', function() {
+            console.log('clicked!!');
+            document.getElementById('infoModal').style.display = 'block';
+        });;
+        window.addEventListener('click', function(event) {
+        if (event.target == infoModal) {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+    });
+    </script>
+<script>
+    window.addEventListener("beforeunload", function (event) {
+      // Cancel the event
+      event.preventDefault();
+      // Chrome requires returnValue to be set
+      event.returnValue = "";
+
+      // Show a confirmation dialog
+      var confirmationMessage = "Bhai Sache Reload karvu che??";
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+      // Gecko and WebKit
+      // Gecko and Trident
+    });
+  </script>
+  </body>
+</html>

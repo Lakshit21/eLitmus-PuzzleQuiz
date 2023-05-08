@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <button
+      id="infoBtn"
+      style="
+        background-color: #ddd;
+        border: none;
+        color: #fff;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+      "
+    >
+      i
+    </button>
+
+    <div
+      id="infoModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+      "
+    >
+      This is Login Page You Have to Enter Your Registered Email and Password to
+      start the game. If You already apear for the game You will not able to
+      give the test again.
+      <br />
+      Click in the BOX to close me
+    </div>
+
+    <div id="member_login">
+      <% if (message !== "") { %>
+      <script>
+        alert("<%= message %>");
+      </script>
+      <% } %>
+
+      <form method="post" action="/login">
+        <div>
+          <label for="email">Email:</label>
+          <input
+            class="txt_field"
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="cleaner h10"></div>
+        <div>
+          <label for="password">Password:</label>
+          <input
+            class="txt_field"
+            type="password"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <div class="cleaner h10"></div>
+        <button class="sub_btn" type="submit"></button>
+      </form>
+      <br />
+      <p>Don't have an account? <a href="/signup">Sign up</a></p>
+      <p>Admin Login <a href="/admin_login"> Admin Login</a></p>
+    </div>
+    <script>
+      document.getElementById("infoBtn").addEventListener("click", function () {
+        console.log("clicked!!");
+        document.getElementById("infoModal").style.display = "block";
+      });
+      window.addEventListener("click", function (event) {
+        if (event.target == infoModal) {
+          document.getElementById("infoModal").style.display = "none";
+        }
+      });
+    </script>
+    <script>
+      window.addEventListener("beforeunload", function (event) {
+        // Cancel the event
+        event.preventDefault();
+        // Chrome requires returnValue to be set
+        event.returnValue = "";
+
+        // Show a confirmation dialog
+        var confirmationMessage = "Bhai Sache Reload karvu che??";
+        event.returnValue = confirmationMessage;
+        return confirmationMessage;
+        // Gecko and WebKit
+        // Gecko and Trident
+      });
+    </script>
+  </body>
+</html>

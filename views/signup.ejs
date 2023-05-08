@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="member_login" style="height: 14rem; margin-left: 26rem; width: 35rem;">
+    <% if (message !== "") { %>
+        <script>alert('<%= message %>');</script>
+    <% } %>
+    <form method="post" action="/signup">
+        <div>
+            <label for="name">Name:</label>
+            <input class="txt_field" type="text" id="name" name="name" required>
+        </div>
+        <div class="cleaner h10"></div>
+        <div>
+            <label for="email">Email:</label>
+            <input class="txt_field" type="email" id="email" name="email" required>
+        </div>
+        <div class="cleaner h10"></div>
+        <div>
+            <label for="password">Password:</label>
+            <input class="txt_field" type="password" id="password" name="password" required>
+        </div>
+        <div class="cleaner h10"></div>
+        <div>
+            <label for="confirm_password">Conform:</label>
+            <input class="txt_field" type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div class="cleaner h10"></div>
+        <div class="cleaner h10"></div>
+        <button class="sub_btn" type="submit"></button>
+        <div class="cleaner h10"></div>
+        <div class="cleaner h10"></div>
+        <div> already have an accont <a href="/login">LogIN</a></div>
+    </form>
+</div>
+<script>
+    window.addEventListener("beforeunload", function (event) {
+      // Cancel the event
+      event.preventDefault();
+      // Chrome requires returnValue to be set
+      event.returnValue = "";
+
+      // Show a confirmation dialog
+      var confirmationMessage = "Bhai Sache Reload karvu che??";
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+      // Gecko and WebKit
+      // Gecko and Trident
+    });
+  </script>
+</body>
+</html>

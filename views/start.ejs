@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <button id="infoBtn" style="
+    background-color: #ddd;
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    " >i</button>
+
+
+    <div id="infoModal" style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    "> 
+This is Instruction Read Carefully, after understandin it
+press the login button at the bottom to start the game.
+            <br>
+            Click in the BOX to close me
+
+</div>
+
+
+<div id="member_login" style="width: 39rem; margin-bottom: 10em;">
+    <form action="/start" method="post">
+        <div>
+<h2>About The Game</h2>
+<ul>
+<li> This is Game is Based on Neverland Island. </li> 
+<li> By The compeltion of the game You will able to check your soft skills </li>
+</ul>
+
+
+<h2>Instruction</h2>
+
+<ul>
+    <li> When you start the game You will able to see Neverland map and a clue box. </li>
+    <li> The clue box is Indicating Where to go next. </li>
+    <li> Based on The clue you have to find the place and click that area in the map. </li>
+    <li> For example, if clue is Mountain then you have to click on Mountiain in given map. </li>
+    <li> When You click you will be redirected to a task. You have to complete the task. </li>
+    <li> After completion of task you have to save and submit you work. </li>
+    <li> You will again redirected to the map. </li>
+    <li> When you will complete all the task You will get your result. </li>
+</ul>
+
+
+        </div>
+        <div class="cleaner h10"></div>
+        <button class="sub_btn" type="submit"></button>
+        <div class="cleaner h10"></div>
+    </form>
+</div>
+<script>
+    document.getElementById('infoBtn').addEventListener('click', function() {
+        console.log('clicked!!');
+        document.getElementById('infoModal').style.display = 'block';
+    });;
+    window.addEventListener('click', function(event) {
+    if (event.target == infoModal) {
+        document.getElementById('infoModal').style.display = 'none';
+    }
+});
+</script>
+<!-- <script>
+    window.addEventListener("beforeunload", function (event) {
+      // Cancel the event
+      event.preventDefault();
+      // Chrome requires returnValue to be set
+      event.returnValue = "";
+      
+      // Show a confirmation dialog
+      var confirmationMessage = "Bhai Sache Reload karvu che??";
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+      // Gecko and WebKit
+      // Gecko and Trident
+    });
+  </script> -->
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+</head>
+<body>
+
+<button id="infoBtn" style="
+background-color: #ddd;
+border: none;
+color: #fff;
+border-radius: 50%;
+width: 25px;
+height: 25px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+" >i</button>
+
+
+<div id="infoModal" style="
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+z-index: 9999;
+"> 
+Theis is Final Admin Monitoring Page. Admin will Monitor the Performance of users in chart and text also 
+at the end there is one logout buttton also.  
+        <br>
+        Click in the BOX to close me
+
+</div>
+
+<div id="dummX" style="display:none"> <%= xVal %></div>
+<div id="dummY" style="display:none"> <%= yVal %></div>
+
+<canvas id="myChart" style="background-color: black; margin-top: 3em;"></canvas>
+
+<div id="member_login" style="width: 35rem;">
+    <div>
+        <h1> Game Report </h1>
+        <!-- <div>
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        </div> -->
+    </div>
+    <hr>
+    <h2> User record </h2>
+    <% id = 1 %>
+    <% User_arr.forEach((item)=>{  %>
+        <div class="cleaner h10"></div>
+        <h4 style="margin-left: 8rem;"> User Number :- <%= id  %></h4>
+        <div class="cleaner h10"></div>
+        <div>
+            <div> User Email is :  <%=item.email%> </div>
+            <table>
+                <tr>
+                    <td> Name : <%=item.name%></td>
+                </tr>
+            </table>
+        </div>
+    <% }); %>
+    <hr>
+
+
+
+    <h2> Memory Game Record</h2>
+    <% id = 1 %>
+    <% Game1_arr.forEach((item)=>{ %>
+        <div class="cleaner h10"></div>
+        <h4 style="margin-left: 8rem;"> User Number :- <%= id  %></h4>
+        <div class="cleaner h10"></div>
+        <div>
+            <div> User Email is :  <%=item.email%> </div>
+            <table>
+                <tr>
+                    <td> Score : <%=item.score%></td>
+                </tr>
+            </table>
+        </div>
+    <% id++}); %>
+    <hr>
+
+
+
+    <h2> Word Coach Record</h2>
+    <% id = 1 %>
+    <% Game2_arr.forEach((item)=>{ %>
+        <div class="cleaner h10"></div>
+        <h4 style="margin-left: 8rem;"> User Number :- <%= id  %></h4>
+        <div class="cleaner h10"></div>
+        <div>
+            <div> User Email is :  <%=item.email%> </div>
+            <table>
+                <tr>
+                    <td> Correct : <%=item.correct%> | </td>
+                    <td> Wrong : <%=item.wrong%> |  </td>
+                    <td> Skipped : <%=item.skip%> </td>
+                </tr>
+            </table>
+        </div>
+    <% id++ }); %>
+    <hr>
+
+    <h2> Brain Storming Record </h2>
+    <% id = 1 %>
+    <% Game3_arr.forEach((item)=>{ %>
+        <div class="cleaner h10"></div>
+        <h4 style="margin-left: 8rem;"> User Number :- <%= id  %></h4>
+        <div class="cleaner h10"></div>
+        <div>
+            <div> User Email is :  <%=item.email%> </div>
+            <table>
+                <tr>
+                    <td> Correct : <%=item.correct%> |  </td>
+                    <td> Wrong : <%=item.wrong%> |  </td>
+                    <td> Hint : <%=item.hint%> </td>
+                </tr>
+            </table>
+        </div>
+    <% id++ }); %>
+    <hr>
+
+    <p> Back to Admin Login <a href="/admin_login"> Admin Login</a></p>
+
+</div>
+<script>
+    let whoX = document.getElementById('dummX').innerText;
+    let whoY = document.getElementById('dummY').innerText;
+
+    let whatX = whoX.split(",").map(String);
+    let whatY = whoY.split(",").map(Number);
+
+    console.log(whatX);
+    console.log(whatY);
+
+    // let xValue = ["1","2","3","4","5","6","7"]
+    // let yValue = [1,2,3,4,5,6,7]
+
+    let xValue = whatX
+    let yValue = whatY
+
+    // document.getElementById('dummX').innerText.forEach((element) => {
+    //     xValue.push(element);
+    // });
+    // document.getElementById('dummY').innerText.forEach((element)=>{
+    //     yValue.push(Number(element));
+    // });
+
+    console.log(xValue);
+    console.log(yValue);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: xValue,
+        datasets: [{
+          label: 'Agreegated Score of the Game!',
+          data: yValue,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 99, 132, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 132, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  </script>
+  <script>
+    document.getElementById('infoBtn').addEventListener('click', function() {
+        console.log('clicked!!');
+        document.getElementById('infoModal').style.display = 'block';
+    });;
+    window.addEventListener('click', function(event) {
+    if (event.target == infoModal) {
+        document.getElementById('infoModal').style.display = 'none';
+    }
+});
+</script>
+<!-- <script>
+    window.addEventListener("beforeunload", function (event) {
+      // Cancel the event
+      event.preventDefault();
+      // Chrome requires returnValue to be set
+      event.returnValue = "";
+
+      // Show a confirmation dialog
+      var confirmationMessage = "Bhai Sache Reload karvu che??";
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+      // Gecko and WebKit
+      // Gecko and Trident
+    });
+  </script> -->
+</body>
+</html>

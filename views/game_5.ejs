@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Score </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="member_login" style="margin-top: 5rem;width: 35rem;">
+    <div> congrats <%= who %> </div>
+    <div> Your Treasure is here! </div>
+    <hr>
+    <div> Game 1 : Memmory Game </div>
+    <div> Score :  <%= g1s %></div>
+    <div> Report :- </div>
+    <% if (g1s < 3) { %>
+        <div>Performance level: Basic Memmory and Eye Sight</div>
+    <% } else if (g1s < 6) { %>
+        <div>Performance level: Medium Memmory and Eye Sight</div>
+    <% } else { %>
+        <div>Performance level: Expert Memmory and Eye Sight</div>
+    <% } %>
+    <hr>
+    <div> Game 2 : Word Coach </div>
+    <div> correct : <%= g2s_c %>, wrong :  <%= g2s_w %>, skip : <%= g2s_s %> </div>
+    <% if (g2s_c < 2 || g2s_w > 2 ) { %>
+        <div>Performance level: Basic English Vocabulary</div>
+    <% } else if (g2s_c < 2 || g2s_w > 0 ) { %>
+        <div>Performance level: Medium English Vocabulary</div>
+    <% } else { %>
+        <div>Performance level: Expert English Vocabulary</div>
+    <% } %>
+    <hr>
+    <div> Game 2 : Brain Storm </div>
+    <div> correct : <%= g3s_c %>, wrong : <%= g3s_w %>, hint : <%= g3s_h %>  </div>
+    <% if (g3s_c < 2 || g3s_w > 2 ) { %>
+        <div>Performance level: Basic Brain Storming</div>
+    <% } else if (g3s_c < 2 || g3s_w > 0 ) { %>
+        <div>Performance level: Medium Brain Storming</div>
+    <% } else { %>
+        <div>Performance level: Expert Brain Storming</div>
+    <% } %>
+    <hr>
+
+    <!-- <script src="/js/app5.js"></script> -->
+
+    <p>Want to Log out ? <a href="/">LogOut</a></p>
+</div>
+<script>
+    window.addEventListener("beforeunload", function (event) {
+      // Cancel the event
+      event.preventDefault();
+      // Chrome requires returnValue to be set
+      event.returnValue = "";
+
+      // Show a confirmation dialog
+      var confirmationMessage = "Bhai Sache Reload karvu che??";
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+      // Gecko and WebKit
+      // Gecko and Trident
+    });
+  </script>
+</body>
+</html>

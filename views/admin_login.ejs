@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="member_login">
+    <% if (message !== "") { %>
+        <script>alert('<%= message %>');</script>
+    <% } %>
+    <form method="post" action="/admin_login">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" class="txt_field" id="name" name="name" required>
+        </div>
+        <div class="cleaner h10"></div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" class="txt_field" id="password" name="password" required>
+        </div>
+        <div class="cleaner h10"></div>
+        <button class="sub_btn" type="submit"></button>
+    </form>
+    <p> Not an Admin? <a href="/login"> User Login</a></p>
+</div>
+<!-- <script>
+    window.addEventListener("beforeunload", function (event) {
+      // Cancel the event
+      event.preventDefault();
+      // Chrome requires returnValue to be set
+      event.returnValue = "";
+
+      // Show a confirmation dialog
+      var confirmationMessage = "Bhai Sache Reload karvu che??";
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+      // Gecko and WebKit
+      // Gecko and Trident
+    });
+  </script> -->
+</body>
+</html>
