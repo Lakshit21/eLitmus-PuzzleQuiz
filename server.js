@@ -12,7 +12,7 @@ const Game4 = require('./models/Game4');
 const Game5 = require('./models/Game5');
 const ADMIN_NAME = "Lakshit";
 const ADMIN_PWD = "india"; //india
-const PORT = process.env.PORT || 3000
+const PORT = 80
 
 
 const app = express();
